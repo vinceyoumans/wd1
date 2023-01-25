@@ -1,0 +1,23 @@
+# Documentation: https://docs.buf.build/configuration/v1/buf-gen-yaml
+version: v1
+plugins:
+  - name: go # Synonym with: protoc-gen-<name>
+    out: gen/go
+    opt: paths=source_relative
+  - name: go-grpc
+    out: gen/go
+    opt:
+      - paths=source_relative
+#      - require_unimplemented_servers=false
+#  - name: rust
+#    out: gen/rust
+#    opt: paths=source_relative
+#  - name: rust
+#    out: gen/rust
+#    opt: paths=source_relative
+
+
+
+#    out: gen/proto/rust
+#  - name: ruby
+#    out: gen/ruby

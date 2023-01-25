@@ -1,0 +1,173 @@
+syntax = "proto3";
+
+package crawler.v1;
+option go_package = "wd1/gen/go/crawler/v1;crawlerpb";
+//option go_package = "crawlerpb";
+
+service CrawlerService {
+  rpc AddCrawl (AddCrawlRequest) returns (AddCrawlResponse) {}  // adds a RootURL to job list
+//  rpc StartCrawl (StartCrawlRequest) returns (StartCrawlResponse) {} // will start jobs
+//  rpc StopCrawl (StopCrawlRequest) returns (StopCrawlResponse) {} // will start jobs
+
+//  rpc CancelCrawl (CancelCrawlRequest) returns (CancelCrawlResponse) {} // cancels a specific job
+  rpc ListCrawl (ListCrawlRequest) returns (ListCrawlResponse) {} // short lists of jobs and status
+  rpc LongListCrawl (LongListCrawlRequest) returns (LongListCrawlResponse) {} // long list of jobs and status
+
+  rpc MonitorCrawl( MonitorCrawlRequest) returns (stream MonitorCrawlResponse) {} // Streams Jobs and status every x seconds ( 4 default )
+
+  rpc MonitorCrawl01( MonitorCrawl01Request) returns (stream MonitorCrawl01Response) {} // streams jobs as a json every x seconds
+}
+
+message AddCrawlRequest {
+  string root_url = 1;
+}
+
+message AddCrawlResponse {
+  string message = 1;
+}
+
+
+message StartCrawlRequest {
+  string m1 = 1;
+}
+
+message StartCrawlResponse {
+  string message = 1;
+}
+
+message StopCrawlRequest {
+  string m1 = 1;
+}
+
+message StopCrawlResponse {
+  string message = 1;
+}
+
+
+
+
+message CancelCrawlRequest {
+  string root_url = 1;  // give a short name for task to cancel crawl
+}
+
+message CancelCrawlResponse {
+  string message = 1;
+}
+
+//-----------------------
+message ListCrawlRequest {
+//  string root_url = 1;
+}
+
+
+message ListCrawlResponse {
+//  string root_url = 1;
+  repeated URLCurrentCrawls url_crawled = 1;
+}
+
+message URLCurrentCrawls {
+  string url_root = 1;
+
+  enum URLCurrentStatus {
+    URL_CURRENT_STATUS_UNSPECIFIED = 0;
+    URL_CURRENT_STATUS_NO_RECORD = 1;
+    URL_CURRENT_STATUS_PENDING = 2; // In List waiting for Start Que
+    URL_CURRENT_STATUS_START = 3; // Tagged for Crawling
+    URL_CURRENT_STATUS_IN_PROGRESS = 4;
+    URL_CURRENT_STATUS_FINISHED = 5;
+    URL_CURRENT_STATUS_CANCELED = 6;
+  }
+  URLCurrentStatus url_status = 2;
+}
+
+
+
+//-----------------------
+message LongListCrawlRequest {
+//  optional string root_url = 1;
+  string root_url = 1;
+}
+
+
+message LongListCrawlResponse {
+  //  string root_url = 1;
+  repeated URLLongListCurrentCrawls url_crawled = 1;
+}
+
+message URLLongListCurrentCrawls {
+  string url_root = 1;
+
+  enum URLCurrentStatus {
+    URL_CURRENT_STATUS_UNSPECIFIED = 0;
+    URL_CURRENT_STATUS_NO_RECORD = 1;
+    URL_CURRENT_STATUS_PENDING = 2; // In List waiting for Start Que
+    URL_CURRENT_STATUS_START = 3; // Tagged for Crawling
+    URL_CURRENT_STATUS_IN_PROGRESS = 4;
+    URL_CURRENT_STATUS_FINISHED = 5;
+    URL_CURRENT_STATUS_CANCELED = 6;
+  }
+  URLCurrentStatus url_status = 2;
+
+  repeated string url_crawled = 3;
+}
+
+
+
+//-----------------------
+
+message MonitorCrawlRequest {
+  string root_url = 1;
+}
+
+message MonitorCrawlResponse {
+//  repeated URLMonitorCrawls root_url = 1;
+  URLMonitorCrawls root_url = 1;
+
+}
+
+message URLMonitorCrawls {
+  string url_root = 1;
+
+  enum URLCurrentStatus {
+    URL_CURRENT_STATUS_UNSPECIFIED = 0;
+    URL_CURRENT_STATUS_NO_RECORD = 1;
+    URL_CURRENT_STATUS_PENDING = 2; // In List waiting for Start Que
+    URL_CURRENT_STATUS_START = 3; // Tagged for Crawling
+    URL_CURRENT_STATUS_IN_PROGRESS = 4;
+    URL_CURRENT_STATUS_FINISHED = 5;
+    URL_CURRENT_STATUS_CANCELED = 6;
+  }
+  URLCurrentStatus url_status = 2;
+
+  repeated string url_crawled = 3;
+}
+
+
+//-----------------------
+
+message MonitorCrawl01Request {
+  string root_url = 1;
+}
+
+message MonitorCrawl01Response {
+  //  repeated URLMonitorCrawls root_url = 1;
+  URLMonitorCrawls root_url = 1;
+
+}
+
+message URLMonitor01Crawls {
+  string url_root = 1;
+
+  enum URLCurrentStatus {
+    URL_CURRENT_STATUS_UNSPECIFIED = 0;
+    URL_CURRENT_STATUS_NO_RECORD = 1;
+    URL_CURRENT_STATUS_PENDING = 2; // In List waiting for Start Que
+    URL_CURRENT_STATUS_START = 3; // Tagged for Crawling
+    URL_CURRENT_STATUS_IN_PROGRESS = 4;
+    URL_CURRENT_STATUS_FINISHED = 5;
+    URL_CURRENT_STATUS_CANCELED = 6;
+  }
+  URLCurrentStatus url_status = 2;
+
+  repeated string url_crawled = 3;
+}
