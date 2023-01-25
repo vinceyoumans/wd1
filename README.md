@@ -86,6 +86,24 @@ will build to ./build/go/server.exe
 
 ```make serverTest```
 TODO: make server Testable
+TODO:  add cicd github actions to for integration testing.
+TODO: GHA deploy server to some cloud 
+TODO: create a DART gRPC client
+TODO:  do a RUST server
+
+TODO: do video
+
+TODO: implement fetch test that will only return childURL of RootURL.  Just forgot to do it.
+TODO: Figure out a cancel strategy because by the time the app is added, it's to late to cancel as the job is already finished.
+- perhaps some sort of interrupt
+
+TODO: video of how things work
+
+TODO: clean up the code a bit.
+
+
+# NOTE
+
 
 
 
