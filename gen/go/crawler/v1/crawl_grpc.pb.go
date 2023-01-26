@@ -23,6 +23,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CrawlerServiceClient interface {
 	AddCrawl(ctx context.Context, in *AddCrawlRequest, opts ...grpc.CallOption) (*AddCrawlResponse, error)
+	// rpc CancelCrawl (CancelCrawlRequest) returns (CancelCrawlResponse) {} // cancels a specific job
 	ListCrawl(ctx context.Context, in *ListCrawlRequest, opts ...grpc.CallOption) (*ListCrawlResponse, error)
 	LongListCrawl(ctx context.Context, in *LongListCrawlRequest, opts ...grpc.CallOption) (*LongListCrawlResponse, error)
 	MonitorCrawl(ctx context.Context, in *MonitorCrawlRequest, opts ...grpc.CallOption) (CrawlerService_MonitorCrawlClient, error)

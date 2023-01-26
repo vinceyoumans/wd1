@@ -62,6 +62,7 @@ func Fetch01(urlRoot string) ([]byte, []string, error) {
 			for _, a := range n.Attr {
 				if a.Key == "href" {
 					//childUrls = append(childUrls, a.Val)
+					log.Printf(string("---------   in scan   a.Val = %s  -- urlRoot = %s"), a.Val, urlRoot)
 					if strings.HasPrefix(a.Val, urlRoot) {
 						childUrls = append(childUrls, a.Val)
 					}
