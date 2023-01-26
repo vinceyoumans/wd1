@@ -1,4 +1,4 @@
-package main
+package scrap
 
 //func ScanbURL(rootURL string) ([]string, error) {
 //	// Create a timeout value for the http.Get request

@@ -8,6 +8,7 @@ import (
 	"golang.org/x/net/html"
 	"log"
 	"net/http"
+	"strings"
 	"time"
 	crawlerpb "wd1/gen/go/crawler/v1"
 )
@@ -60,7 +61,10 @@ func Fetch01(urlRoot string) ([]byte, []string, error) {
 		if n.Type == html.ElementNode && n.Data == "a" {
 			for _, a := range n.Attr {
 				if a.Key == "href" {
-					childUrls = append(childUrls, a.Val)
+					//childUrls = append(childUrls, a.Val)
+					if strings.HasPrefix(a.Val, urlRoot) {
+						childUrls = append(childUrls, a.Val)
+					}
 				}
 			}
 		}
