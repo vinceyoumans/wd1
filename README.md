@@ -95,8 +95,30 @@ TODO: clean up the code a bit.
 
 # NOTE
 
+## Usine BUF to build gRPC library
+Instead of using protoc to create libraries, I am using buf
+
+buf lint
+
+buf generate
+
+make server
+
+make client
 
 
 
+# example commands
 
+
+- to start server
+./crawlserver
+
+
+- monitor server as a stream
+./crawl monitor
+
+
+- add a url to crawl
+./crawl add --rootURL="https://www.wix.com"
 
