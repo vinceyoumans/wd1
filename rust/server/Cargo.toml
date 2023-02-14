@@ -1,0 +1,8 @@
+[dependencies]
+tonic = "0.16.0"
+prost = "0.7.0"
+
+[build-dependencies]
+protoc-rust = "0.12.0"
+
+

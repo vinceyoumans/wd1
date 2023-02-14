@@ -1,4 +1,4 @@
-.PHONY: server serverTest client runServer
+.PHONY: server serverTest client runServer rustgen rustServer rustClient
 
 server:
 	@echo "Linting Go files...   except my goLint is not working for some reason...  need to check that out"
@@ -24,4 +24,13 @@ client:
 #	golint ./client/crawl01/*.go
 	@echo "Building CLEINT Go files..."
 	go build -o ./build/go/crawl ./client/crawl01/*.go
+	@echo "client Build completed - look in build dir"
+
+
+rustgen:
+	@echo "RUST GEN gRPC/Proto library.   Not sure how to lint, but the goland linter should be good enough"
+	@echo "Building CLEINT Go files..."
+	#go build -o ./build/go/crawl ./client/crawl01/*.go
+	protoc -I=. crawler.proto --rust_out=. --grpc_out=. --plugin=protoc-gen-grpc=path/to/grpc_rust_plugin
+
 	@echo "client Build completed - look in build dir"

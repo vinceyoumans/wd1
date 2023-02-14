@@ -36,15 +36,6 @@ I am adding my own optional items.
 3. Add github action for cicd
 
 
-
-# excuse for late submission
-I received notice and was expecting some sort of challenge, but I only briefly saw the email challenge on the 12th, 
-thursday as I was running last minute errands before out of country visitors arrived.  My friends arrived 13th and I 
-thought I could make time on 16th to do challenge, which didn't happen.  I had jurry duty 17th, 18th and was excused 19th. 
-But on way home from court of 19th, I stopped at pool to do some laps, which turned into a 5K.  The 20th, from the swim, I was dehydrated, 
-Low electrolytes and just in a fog.  Plus My friends where still staying.  Same distractions until friends left on 22nd.  
-But I finally got to the challenge night of 22nd.  
-
 # Problems
 I just had 4 hours to do this, and I had a lot of ideas in my head on how.  Plus, I was working on some other projects that
 I wanted to experiment with.
