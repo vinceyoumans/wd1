@@ -1,9 +1,18 @@
 # Wd1 -
 
+A sample GoLang course Exam Question by vincent youmans.
+- Skills:
+    - gRPC/PROTOCOL Buffers
+    - Make, Protoc, Buf
+    - Go routines
+    - Go Cobra CLI
+    - Understanding of adding gRPC client and server libraries
+      
+
 ## Assignment
 
 The following test is to be implemented in Go and while you can take as much time as you need,
-it's not expected that you spend more than 2 or 3 hours on it.
+it's not expected that you spend more than 4 hours on it.
 
 The test consists of implementing a "Web Crawler as a gRPC service".
 The application consists of a command line client and a local service which runs the actual web crawling.
@@ -26,34 +35,48 @@ $ crawl -stop www.example.com  # signals the service to stop crawling www.exampl
 $ crawl -list                                        # shows the current "site tree" for all crawled URLs.
 
 
+## Required GoLang Development Libraires
+1. protoc
+https://github.com/golang/protobuf
+
+2. BUF
+https://github.com/bufbuild/buf
+
+  
 
 ## VY Optional
-
-I am adding my own optional items.
+Extra Points
 
 1. Using BUF CLI to build gRPC library
 2. might write the actual scan code as a RUST service
 3. Add github action for cicd
+4. A service called StartScan()
+```go StartScan()```
 
-
-# Problems
-I just had 4 hours to do this, and I had a lot of ideas in my head on how.  Plus, I was working on some other projects that
-I wanted to experiment with.
-
-## V1
-I had this idea that I could have a background process that would continually scan a Map of Pending jobs and run the jobs.
-I begin the scan with a ```go StartScan()``` in server main, just before calling serve.   I use a go process because both the
-serve() and StartScan() are both blocking...  
+## VY TODO
+1. Add RUST gRPC Libraries
+2. Add Dart gRPC libraries
+3. Add GH Actions to deploy to
+   - AWS EC2
+   - Digital Ocean
+  
+   
+## VY Comment
+### v01
+- go startScan()
+  -  background process that would continually scan a Map of Pending jobs and run the jobs.
+    - I begin the scan with a ```go StartScan()``` in server main, just before calling serve.   I use a go process because both the
+serve() and StartScan() are blocking...  
 But in doing this, I think I am messing up  the WorkGroups, which the Scan function is using.
 
 
-## v2
+### v02
 from Add,
 I will add the rootURL to JOBS map then run StartScan.
 
 I think this is a better Idea anyway... as there is no reason to scan if no jobs were added.
 
-## ScanURL
+### ScanURL - Blacklisting WEBSITE.
 As I was developing the ScanFunction, I tended to blacklist my IP address, including my own website vyoumans.com
 It took me some time to realise this....   which consumed some time.
 
